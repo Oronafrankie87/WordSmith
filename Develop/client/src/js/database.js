@@ -20,13 +20,13 @@ const tx = smithDB.transaction('pwa','readwrite');
 const store = tx.objectStore('pwa');
 const request = store.put({text: content});
 const result = await request;
-console.log("🎸 Data Saved!", results );
+console.log( "🎸 Data Saved!", results.value );
 }
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
 console.log('GET from database');
 const smithDB = await openDB('pwa', 1);
-const tx = smithDB.transaction('pwa', 1);
+const tx = smithDB.transaction('pwa', 'readonly');
 const store = tx.objectStore('pwa');
 const request = store.getAll();
 const result = await request;
